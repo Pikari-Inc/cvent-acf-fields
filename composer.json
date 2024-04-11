@@ -1,0 +1,34 @@
+{
+  "name": "pikari/cvent-acf-fields",
+  "version": "1.0.0",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "description": "Cvent ACF Fields for WordPress",
+  "authors": [
+    {
+      "name": "Pikari",
+      "email": "development@pikari.io",
+      "homepage": "https://pikari.io"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Pikari\\CventAcfFields\\": "core/"
+    }
+  },
+  "require": {
+    "php": "^8.0"
+  },
+  "config": {
+    "vendor-dir": "lib",
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0"
+  }
+}
