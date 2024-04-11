@@ -4,7 +4,7 @@
  * Plugin Name:     Pikari Cvent ACF Fields
  * Plugin URI:      https://pikari.io
  * Description:     A plugin to integrate CVENT data into custom ACF fields.
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          Pikari Inc.
  * Author URI:      https://pikari.io
  * Text Domain:     pikari-cvent-acf-fields
