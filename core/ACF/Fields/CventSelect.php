@@ -276,7 +276,7 @@ abstract class CventSelect extends \acf_field
      * description.
      *
      * @type    function
-     * @date    24/10/13
+     * @date    24/12/04
      * @since   5.0.0
      *
      * @param   $post_id (int)
@@ -285,9 +285,25 @@ abstract class CventSelect extends \acf_field
 
     public function ajax_query()
     {
+        $nonce = acf_request_arg('nonce', '');
+        $key   = acf_request_arg('field_key', '');
 
-        // validate.
-        if (! acf_verify_ajax()) {
+        // Back-compat for field settings.
+        if (!acf_is_field_key($key)) {
+            $nonce = '';
+            $key   = '';
+        }
+
+        // validate
+        /**
+         *  In `acf_verify_ajax()`, the action is expected to be in this format: 'acf_field_' . $this->name . '_' . $key;
+         * Because this field is ultimately rendered by the select field class, the nonce action used to create the
+         * nonce is tied to 'select' instead of 'multiple_taxonomy'. So, here we set the action and then run our own
+         * validation of the nonce.
+         */
+        $action = 'acf_field_select_' . $key;
+        if (! wp_verify_nonce(sanitize_text_field($nonce), $action)) {
+            wp_send_json_error();
             die();
         }
 
